@@ -29,6 +29,13 @@ class ParserTests(unittest.TestCase):
         text = "safe.example.com\ninvalid domain line\n-bad.example\nvalid.example.net\n"
         self.assertEqual(update_hosts.parse_domains(text, allow), {"valid.example.net"})
 
+    def test_adblock_domain_rules_and_exceptions(self):
+        text = "||ads.example.com^\n||tracker.example.net^$important\n@@||safe.example.org^\n"
+        self.assertEqual(
+            update_hosts.parse_domains(text),
+            {"ads.example.com", "tracker.example.net"},
+        )
+
     def test_idn_normalization(self):
         self.assertEqual(update_hosts.normalize_domain("bücher.example"), "xn--bcher-kva.example")
 
