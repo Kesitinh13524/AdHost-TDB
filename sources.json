@@ -1,14 +1,54 @@
 [
   {
-    "name": "HaGeZi Ultimate",
+    "name": "HaGeZi Multi Ultimate",
     "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/hosts/ultimate.txt"
   },
   {
-    "name": "StevenBlack",
+    "name": "1Hosts Xtra",
+    "url": "https://raw.githubusercontent.com/badmojr/1Hosts/master/Xtra/hosts.txt"
+  },
+  {
+    "name": "OISD Big domains",
+    "url": "https://raw.githubusercontent.com/sjhgvr/oisd/main/domainswild_big.txt"
+  },
+  {
+    "name": "hBlock domains",
+    "url": "https://hblock.molinero.dev/hosts_domains.txt"
+  },
+  {
+    "name": "Lightswitch05 Ads and Tracking Extended",
+    "url": "https://www.github.developerdan.com/hosts/lists/ads-and-tracking-extended.txt"
+  },
+  {
+    "name": "StevenBlack Unified Hosts",
     "url": "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
   },
   {
     "name": "AdAway",
-    "url": "https://adaway.org/hosts.txt"
+    "url": "https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt"
+  },
+  {
+    "name": "GoodbyeAds",
+    "url": "https://raw.githubusercontent.com/jerryn70/GoodbyeAds/master/Hosts/GoodbyeAds.txt"
+  },
+  {
+    "name": "anti-AD domains",
+    "url": "https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-domains.txt"
+  },
+  {
+    "name": "NoTracking hostnames",
+    "url": "https://raw.githubusercontent.com/notracking/hosts-blocklists/master/hostnames.txt"
+  },
+  {
+    "name": "NextDNS recommended source: ad-wars",
+    "url": "https://raw.githubusercontent.com/jdlingyu/ad-wars/master/hosts"
+  },
+  {
+    "name": "NextDNS recommended source: tiuxo ads",
+    "url": "https://raw.githubusercontent.com/tiuxo/hosts/master/ads"
+  },
+  {
+    "name": "AnudeepND adservers",
+    "url": "https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt"
   }
 ]
