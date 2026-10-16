@@ -4,7 +4,7 @@ A single merged, deduplicated domain denylist for **NextDNS custom denylist** an
 
 ## Output format
 
-`hosts.txt` is intentionally a **plain domain list**: one domain per line, no IP address prefix, no duplicate domains. The generator converts standard hosts-file lines and plain domain feeds into lowercase ASCII domains, validates syntax, removes duplicates, and applies `allowlist.txt`.
+`hosts.txt` is intentionally a **plain domain list**: one domain per line, no IP address prefix, no duplicate domains. The generator converts standard hosts-file lines and plain domain feeds and simple Adblock domain rules into lowercase ASCII domains, validates syntax, removes duplicates, and applies `allowlist.txt`.
 
 Example:
 
@@ -19,9 +19,9 @@ https://raw.githubusercontent.com/Kesitinh13524/AdHost-TDB/main/hosts.txt
 
 ## Aggregated sources
 
-The daily generator merges these 37 upstream feeds where available:
+The daily generator merges these 45 upstream feeds where available:
 
-- HaGeZi Multi Ultimate
+- HaGeZi Pop-Up Ads domains
 - 1Hosts Xtra
 - OISD Big domains
 - hBlock domains
@@ -51,6 +51,8 @@ The daily generator merges these 37 upstream feeds where available:
 - FadeMind Additional Risks
 - Android app ads hosts
 - DataMaster Android AdBlock hosts
+- HaGeZi native trackers for Xiaomi, Samsung, Apple, Amazon, OPPO/Realme, Vivo, and Huawei
+- HaGeZi referral and affiliate trackers
 
 These lists overlap by design; the generator stores each valid domain only once. Sources may change, become unavailable, or contain false positives. Some upstream lists include malware, phishing, telemetry, and tracking domains in addition to advertising domains. This is an aggressive combined list, so legitimate app/site features may occasionally be blocked.
 
@@ -60,7 +62,7 @@ GitHub Actions is scheduled daily at 19:17 UTC (02:17 in Vietnam, UTC+7). You ca
 
 The workflow runs parser tests, downloads the feeds, validates the aggregate, and commits `hosts.txt` only if it passes the minimum-size safety check. If every source fails or the result is unexpectedly small, the previous list is preserved.
 
-**Bootstrap note:** until the first successful workflow run completes, `hosts.txt` contains only a small starter list. Check the [Actions page](https://github.com/Kesitinh13524/AdHost-TDB/actions) for the first successful run before relying on the full aggregate.
+**Current aggregate:** `hosts.txt` has been populated with 74,512 unique domains from the ad, pop-up, referral, mobile, Smart TV, and native-device tracker feeds collected in this update. The scheduled workflow will refresh it from the 45 configured upstream sources when a run completes successfully. Check the [Actions page](https://github.com/Kesitinh13524/AdHost-TDB/actions) for update status.
 
 ## False positives
 
