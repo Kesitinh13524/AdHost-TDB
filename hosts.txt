@@ -1,0 +1,5 @@
+# AdHost-TDB — NextDNS-compatible custom denylist
+# Bootstrap seed only; the first successful GitHub Actions run generates the full list.
+# Format: one bare domain per line, no IP address prefix.
+ads.example
+tracker.example
