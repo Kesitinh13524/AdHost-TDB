@@ -1,7 +1,7 @@
 [
   {
-    "name": "HaGeZi Multi Ultimate",
-    "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/hosts/ultimate.txt"
+    "name": "HaGeZi Pop-Up Ads domains",
+    "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/popupads-onlydomains.txt"
   },
   {
     "name": "1Hosts Xtra",
@@ -146,5 +146,37 @@
   {
     "name": "Android adblock hosts",
     "url": "https://raw.githubusercontent.com/DataMaster-2501/DataMaster-Android-AdBlock-Hosts/master/hosts"
+  },
+  {
+    "name": "HaGeZi native Xiaomi trackers",
+    "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/native.xiaomi-onlydomains.txt"
+  },
+  {
+    "name": "HaGeZi native Samsung trackers",
+    "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/native.samsung-onlydomains.txt"
+  },
+  {
+    "name": "HaGeZi native Apple trackers",
+    "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/native.apple-onlydomains.txt"
+  },
+  {
+    "name": "HaGeZi native Amazon trackers",
+    "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/native.amazon-onlydomains.txt"
+  },
+  {
+    "name": "HaGeZi native OPPO and Realme trackers",
+    "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/native.oppo-realme-onlydomains.txt"
+  },
+  {
+    "name": "HaGeZi native Vivo trackers",
+    "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/native.vivo-onlydomains.txt"
+  },
+  {
+    "name": "HaGeZi native Huawei trackers",
+    "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/native.huawei-onlydomains.txt"
+  },
+  {
+    "name": "HaGeZi referral and affiliate trackers",
+    "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/blocklist-referral-native.txt"
   }
 ]
