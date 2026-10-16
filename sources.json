@@ -50,5 +50,101 @@
   {
     "name": "AnudeepND adservers",
     "url": "https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt"
+  },
+  {
+    "name": "Re-Malwack Aggressive aggregate (1M+ domains)",
+    "url": "https://raw.githubusercontent.com/Re-Malwack/hosts/main/hosts/aggressive"
+  },
+  {
+    "name": "Re-Malwack Default aggregate",
+    "url": "https://raw.githubusercontent.com/Re-Malwack/hosts/main/hosts/default"
+  },
+  {
+    "name": "BlocklistProject Ads",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/master/ads.txt"
+  },
+  {
+    "name": "BlocklistProject Tracking",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/master/tracking.txt"
+  },
+  {
+    "name": "Vietnamese hostsVN",
+    "url": "https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts"
+  },
+  {
+    "name": "Vietnamese hostsVN ad servers",
+    "url": "https://raw.githubusercontent.com/bigdargon/hostsVN/master/source/adservers-all.txt"
+  },
+  {
+    "name": "AdGuard Mobile Ads hosts",
+    "url": "https://raw.githubusercontent.com/r-a-y/mobile-hosts/master/AdguardMobileAds.txt"
+  },
+  {
+    "name": "AdGuard Mobile Spyware hosts",
+    "url": "https://raw.githubusercontent.com/r-a-y/mobile-hosts/master/AdguardMobileSpyware.txt"
+  },
+  {
+    "name": "PolishFilters KADhosts",
+    "url": "https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt"
+  },
+  {
+    "name": "FadeMind Spam hosts",
+    "url": "https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Spam/hosts"
+  },
+  {
+    "name": "FadeMind anti-popads",
+    "url": "https://raw.githubusercontent.com/FadeMind/hosts.extras/master/antipopads/hosts"
+  },
+  {
+    "name": "Yoyo ad servers",
+    "url": "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext"
+  },
+  {
+    "name": "SomeoneWhoCares hosts",
+    "url": "https://someonewhocares.org/hosts/zero/hosts"
+  },
+  {
+    "name": "Perflyst Smart TV",
+    "url": "https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/SmartTV.txt"
+  },
+  {
+    "name": "Perflyst Android tracking",
+    "url": "https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/android-tracking.txt"
+  },
+  {
+    "name": "NextDNS native tracking Xiaomi",
+    "url": "https://raw.githubusercontent.com/nextdns/native-tracking-domains/main/domains/xiaomi"
+  },
+  {
+    "name": "NextDNS native tracking Apple",
+    "url": "https://raw.githubusercontent.com/nextdns/native-tracking-domains/main/domains/apple"
+  },
+  {
+    "name": "NextDNS native tracking Alexa",
+    "url": "https://raw.githubusercontent.com/nextdns/native-tracking-domains/main/domains/alexa"
+  },
+  {
+    "name": "DandelionSprout Anti-Malware hosts",
+    "url": "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareHosts.txt"
+  },
+  {
+    "name": "Firebog Easylist hosts",
+    "url": "https://v.firebog.net/hosts/Easylist.txt"
+  },
+  {
+    "name": "Firebog AdGuardDNS hosts",
+    "url": "https://v.firebog.net/hosts/AdguardDNS.txt"
+  },
+  {
+    "name": "FadeMind Additional Risks hosts",
+    "url": "https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Risk/hosts"
+  },
+  {
+    "name": "Android app ads hosts",
+    "url": "https://raw.githubusercontent.com/d43m0nhLInt3r/socialblocklists/master/MobileAppAds/appadsblocklist.txt"
+  },
+  {
+    "name": "Android adblock hosts",
+    "url": "https://raw.githubusercontent.com/DataMaster-2501/DataMaster-Android-AdBlock-Hosts/master/hosts"
   }
 ]
