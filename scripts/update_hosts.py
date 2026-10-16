@@ -37,7 +37,17 @@ def load_allowlist() -> set[str]:
 
 
 def normalize_domain(value: str) -> str | None:
-    value = value.strip().lower().rstrip(".")
+    value = value.strip().lower()
+    # Ignore Adblock exception rules: they explicitly allow a domain.
+    if value.startswith("@@"):
+        return None
+    # Accept simple Adblock rules such as ||ads.example.com^ and
+    # ||tracker.example.net^$important, but not URL/path or regex rules.
+    if value.startswith("||"):
+        value = value[2:]
+    elif value.startswith("|"):
+        value = value[1:]
+    value = re.split(r"[\^$]", value, maxsplit=1)[0].rstrip(".")
     if value.startswith("*."):
         value = value[2:]
     try:
