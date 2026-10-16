@@ -19,7 +19,7 @@ https://raw.githubusercontent.com/Kesitinh13524/AdHost-TDB/main/hosts.txt
 
 ## Aggregated sources
 
-The daily generator merges these 13 upstream feeds where available:
+The daily generator merges these 37 upstream feeds where available:
 
 - HaGeZi Multi Ultimate
 - 1Hosts Xtra
@@ -34,6 +34,23 @@ The daily generator merges these 13 upstream feeds where available:
 - jdlingyu/ad-wars
 - tiuxo/hosts ads
 - AnudeepND adservers
+- Re-Malwack Aggressive aggregate (1M+ domains)
+- Re-Malwack Default aggregate
+- BlocklistProject Ads
+- BlocklistProject Tracking
+- Vietnamese hostsVN and its ad-server feed
+- AdGuard Mobile Ads and Mobile Spyware hosts
+- PolishFilters KADhosts
+- FadeMind Spam and anti-popads
+- Yoyo ad servers
+- SomeoneWhoCares hosts
+- Perflyst Smart TV and Android tracking
+- NextDNS native tracking domains (Xiaomi, Apple, Alexa)
+- DandelionSprout Anti-Malware hosts
+- Firebog Easylist and AdGuardDNS hosts
+- FadeMind Additional Risks
+- Android app ads hosts
+- DataMaster Android AdBlock hosts
 
 These lists overlap by design; the generator stores each valid domain only once. Sources may change, become unavailable, or contain false positives. Some upstream lists include malware, phishing, telemetry, and tracking domains in addition to advertising domains. This is an aggressive combined list, so legitimate app/site features may occasionally be blocked.
 
