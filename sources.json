@@ -1,0 +1,14 @@
+[
+  {
+    "name": "HaGeZi Ultimate",
+    "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/hosts/ultimate.txt"
+  },
+  {
+    "name": "StevenBlack",
+    "url": "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
+  },
+  {
+    "name": "AdAway",
+    "url": "https://adaway.org/hosts.txt"
+  }
+]
