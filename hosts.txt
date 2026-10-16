@@ -1,5 +1,48 @@
 # AdHost-TDB — NextDNS-compatible custom denylist
-# Bootstrap seed only; the first successful GitHub Actions run generates the full list.
-# Format: one bare domain per line, no IP address prefix.
-ads.example
-tracker.example
+# Bootstrap seed only; GitHub Actions will replace this with the validated aggregate.
+# Format: one bare domain per line. Do not add IP address prefixes.
+ad.doubleclick.net
+doubleclick.net
+googleadservices.com
+pagead2.googlesyndication.com
+googleads.g.doubleclick.net
+adservice.google.com
+ads.youtube.com
+adnxs.com
+adsrvr.org
+adform.net
+advertising.com
+bidswitch.net
+casalemedia.com
+criteo.com
+criteo.net
+demdex.net
+exelator.com
+casalemedia.com
+eyeota.net
+flashtalking.com
+googlesyndication.com
+googletagmanager.com
+googletagservices.com
+hotjar.com
+indexexchange.com
+krxd.net
+lijit.com
+mathtag.com
+moatads.com
+openx.net
+outbrain.com
+pubmatic.com
+quantserve.com
+scorecardresearch.com
+serving-sys.com
+sharethrough.com
+smartadserver.com
+taboola.com
+teads.tv
+thetradedesk.com
+rubiconproject.com
+undertone.com
+w55c.net
+yieldmo.com
+zedo.com
