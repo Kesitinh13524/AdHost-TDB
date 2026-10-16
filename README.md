@@ -1,38 +1,54 @@
 # AdHost-TDB
 
-Aggressive ad, tracker, telemetry and unwanted-domain blocklist intended for **NextDNS custom denylist** and other domain-list DNS blockers.
+A single merged, deduplicated domain denylist for **NextDNS custom denylist** and compatible DNS blockers.
 
-## NextDNS format
+## Output format
 
-Use `hosts.txt` as the custom denylist source. It contains **one domain per line**, for example:
+`hosts.txt` is intentionally a **plain domain list**: one domain per line, no IP address prefix, no duplicate domains. The generator converts standard hosts-file lines and plain domain feeds into lowercase ASCII domains, validates syntax, removes duplicates, and applies `allowlist.txt`.
+
+Example:
 
 ```text
-ads.example.com
+ad.doubleclick.net
+doubleclick.net
 tracker.example.net
 ```
 
-This is deliberately **not** an operating-system hosts file: do not add `0.0.0.0` or `127.0.0.1` prefixes. The generated file is a domain-only list.
+Raw URL:
+https://raw.githubusercontent.com/Kesitinh13524/AdHost-TDB/main/hosts.txt
 
-Raw list URL:
-`https://raw.githubusercontent.com/Kesitinh13524/AdHost-TDB/main/hosts.txt`
+## Aggregated sources
 
-## Automatic refresh
+The daily generator merges these 13 upstream feeds where available:
+
+- HaGeZi Multi Ultimate
+- 1Hosts Xtra
+- OISD Big domains
+- hBlock domains
+- Lightswitch05 Ads & Tracking Extended
+- StevenBlack Unified Hosts
+- AdAway
+- GoodbyeAds
+- anti-AD
+- NoTracking hostnames
+- jdlingyu/ad-wars
+- tiuxo/hosts ads
+- AnudeepND adservers
+
+These lists overlap by design; the generator stores each valid domain only once. Sources may change, become unavailable, or contain false positives. Some upstream lists include malware, phishing, telemetry, and tracking domains in addition to advertising domains. This is an aggressive combined list, so legitimate app/site features may occasionally be blocked.
+
+## Automatic updates
 
 GitHub Actions is scheduled daily at 19:17 UTC (02:17 in Vietnam, UTC+7). You can also run it manually from **Actions → Update NextDNS blocklist → Run workflow**.
 
-The updater merges public lists, normalizes host-format and plain-domain entries into bare domains, validates domain syntax, deduplicates entries, applies `allowlist.txt`, and refuses to replace the output if the aggregate is unexpectedly small.
+The workflow runs parser tests, downloads the feeds, validates the aggregate, and commits `hosts.txt` only if it passes the minimum-size safety check. If every source fails or the result is unexpectedly small, the previous list is preserved.
 
-## Notes
+**Bootstrap note:** until the first successful workflow run completes, `hosts.txt` contains only a small starter list. Check the [Actions page](https://github.com/Kesitinh13524/AdHost-TDB/actions) for the first successful run before relying on the full aggregate.
 
-- Aggressive lists can block legitimate sites or app functions. If a service stops working, remove its domain from the NextDNS denylist or add it to `allowlist.txt` and run the workflow again.
-- No list blocks every ad; first-party ads may share domains with wanted content.
-- The current `hosts.txt` is only a bootstrap seed. The full aggregate will be published after the first successful GitHub Actions run.
-- A successful GitHub commit means the list was published, not that every domain has been manually tested in NextDNS.
+## False positives
 
-## Sources
+If a wanted site or app stops working, identify the blocked domain in NextDNS logs and add that exact domain to `allowlist.txt`, then run the workflow again. Keep allowlist entries specific rather than allowlisting an entire large provider domain.
 
-- HaGeZi DNS blocklists: https://github.com/hagezi/dns-blocklists
-- StevenBlack hosts: https://github.com/StevenBlack/hosts
-- AdAway hosts: https://adaway.org/hosts.txt
+## Upstream licenses
 
-Upstream lists have their own licenses and terms. See [LICENSE-NOTICE.md](LICENSE-NOTICE.md).
+This repository aggregates third-party feeds. Refer to each source's repository and license for its redistribution terms. See [LICENSE-NOTICE.md](LICENSE-NOTICE.md).
