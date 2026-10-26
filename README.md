@@ -71,3 +71,20 @@ If a wanted site or app stops working, identify the blocked domain in NextDNS lo
 ## Upstream licenses
 
 This repository aggregates third-party feeds. Refer to each source's repository and license for its redistribution terms. See [LICENSE-NOTICE.md](LICENSE-NOTICE.md).
+
+
+## User-selected snapshot list
+
+[hosts-selected-sources.txt](https://raw.githubusercontent.com/Kesitinh13524/AdHost-TDB/main/hosts-selected-sources.txt) is a static, sorted plain-domain export from the seven filter archives supplied for this snapshot. It contains 283,247 unique hostnames from 536,386 source entries.
+
+| Source | Host entries | Archive metadata updated (UTC) |
+| --- | ---: | --- |
+| StevenBlack hosts | 71,476 | 2026-10-19 04:43:12 |
+| HaGeZi Pro | 202,297 | 2026-10-19 05:18:04 |
+| HaGeZi Multi | 166,141 | 2026-10-19 05:17:45 |
+| EasyList | 41,832 | 2026-10-26 07:45:41 |
+| AdGuard Android filter 11 optimized | 930 | 2026-10-26 09:33:40 |
+| AdGuard uBlock filter 11 | 929 | 2026-10-26 09:50:59 |
+| AdGuard uBlock filter 2 | 52,781 | 2026-10-26 09:53:25 |
+
+The export contains hostname entries decoded from each archive's domain trie, one lowercase hostname per line. See [LICENSE-NOTICE.md](LICENSE-NOTICE.md) for upstream attribution and license information.
