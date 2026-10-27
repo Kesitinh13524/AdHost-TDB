@@ -14,7 +14,9 @@ doubleclick.net
 tracker.example.net
 ```
 
-Raw URLs: import `hosts.txt` and every `hosts-part-*.txt` file listed in the [repository](https://github.com/Kesitinh13524/AdHost-TDB/tree/main). Each part contains unique domains and the parts do not overlap.
+Raw URLs (import both; the shards contain no duplicate domains):
+- [hosts.txt](https://raw.githubusercontent.com/Kesitinh13524/AdHost-TDB/main/hosts.txt)
+- [hosts-part-02.txt](https://raw.githubusercontent.com/Kesitinh13524/AdHost-TDB/main/hosts-part-02.txt)
 
 ## Aggregated sources
 
