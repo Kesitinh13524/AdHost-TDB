@@ -1,6 +1,6 @@
 # AdHost-TDB
 
-One logical, deduplicated domain denylist for **NextDNS custom denylist** and compatible DNS blockers. When needed, GitHub stores it as several smaller, non-overlapping files.
+One logical, deduplicated domain denylist for **Adblocker app** and compatible DNS blockers. When needed, GitHub stores it as several smaller, non-overlapping files.
 
 ## Output format
 
@@ -57,9 +57,8 @@ The daily generator merges these 70 upstream feeds where available:
 
 These lists overlap by design; the generator stores each valid domain only once across all output parts. Sources may change, become unavailable, or contain false positives. Some upstream lists include malware, phishing, telemetry, and tracking domains. The complete BlocklistProject set also includes social-media and content categories such as adult content, drugs, gambling, and piracy, so importing every part may block those services as well.
 
-## Automatic updates
+## weekly updates
 
-GitHub Actions is scheduled daily at 19:17 UTC (02:17 in Vietnam, UTC+7). You can also run it manually from **Actions → Update NextDNS blocklist → Run workflow**.
 
 The workflow runs parser tests, downloads the feeds, validates the aggregate, and commits all generated host-list parts only if the aggregate passes the minimum-size safety check. If every source fails or the result is unexpectedly small, the previous list is preserved.
 
