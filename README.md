@@ -1,10 +1,10 @@
 # AdHost-TDB
 
-A single merged, deduplicated domain denylist for **NextDNS custom denylist** and compatible DNS blockers.
+One logical, deduplicated domain denylist for **NextDNS custom denylist** and compatible DNS blockers. When needed, GitHub stores it as several smaller, non-overlapping files.
 
 ## Output format
 
-`hosts.txt` is intentionally a **plain domain list**: one domain per line, no IP address prefix, no duplicate domains. The generator converts standard hosts-file lines and plain domain feeds and simple Adblock domain rules into lowercase ASCII domains, validates syntax, removes duplicates, and applies `allowlist.txt`.
+`hosts.txt` is the first shard of a **plain domain list**: one lowercase domain per line, with no IP address prefix. The generator converts standard hosts-file lines, plain domain feeds, and simple Adblock domain rules; validates hostnames; removes duplicates; and applies `allowlist.txt`. If the combined output grows beyond the safe GitHub file size, it creates `hosts-part-02.txt` and later parts. Import every generated shard; no hostname is repeated between files.
 
 Example:
 
@@ -14,12 +14,11 @@ doubleclick.net
 tracker.example.net
 ```
 
-Raw URL:
-https://raw.githubusercontent.com/Kesitinh13524/AdHost-TDB/main/hosts.txt
+Raw URLs: import `hosts.txt` and every `hosts-part-*.txt` file listed in the [repository](https://github.com/Kesitinh13524/AdHost-TDB/tree/main). Each part contains unique domains and the parts do not overlap.
 
 ## Aggregated sources
 
-The daily generator merges these 45 upstream feeds where available:
+The daily generator merges these 70 upstream feeds where available:
 
 - HaGeZi Pop-Up Ads domains
 - 1Hosts Xtra
@@ -36,8 +35,7 @@ The daily generator merges these 45 upstream feeds where available:
 - AnudeepND adservers
 - Re-Malwack Aggressive aggregate (1M+ domains)
 - Re-Malwack Default aggregate
-- BlocklistProject Ads
-- BlocklistProject Tracking
+- BlocklistProject Lists: all 25 published host lists (Abuse, Adobe, Ads, Basic, Crypto, Drugs, Facebook, Fortnite, Fraud, Gambling, Malware, Phishing, Piracy, Porn, Ransomware, Redirect, Scam, Smart TV, TikTok, Torrent, Tracking, Twitter, Vaping, WhatsApp, and YouTube), plus Porn Alpha
 - Vietnamese hostsVN and its ad-server feed
 - AdGuard Mobile Ads and Mobile Spyware hosts
 - PolishFilters KADhosts
@@ -53,16 +51,17 @@ The daily generator merges these 45 upstream feeds where available:
 - DataMaster Android AdBlock hosts
 - HaGeZi native trackers for Xiaomi, Samsung, Apple, Amazon, OPPO/Realme, Vivo, and Huawei
 - HaGeZi referral and affiliate trackers
+- HaGeZi TIF threat-intelligence domains
 
-These lists overlap by design; the generator stores each valid domain only once. Sources may change, become unavailable, or contain false positives. Some upstream lists include malware, phishing, telemetry, and tracking domains in addition to advertising domains. This is an aggressive combined list, so legitimate app/site features may occasionally be blocked.
+These lists overlap by design; the generator stores each valid domain only once across all output parts. Sources may change, become unavailable, or contain false positives. Some upstream lists include malware, phishing, telemetry, and tracking domains. The complete BlocklistProject set also includes social-media and content categories such as adult content, drugs, gambling, and piracy, so importing every part may block those services as well.
 
 ## Automatic updates
 
 GitHub Actions is scheduled daily at 19:17 UTC (02:17 in Vietnam, UTC+7). You can also run it manually from **Actions → Update NextDNS blocklist → Run workflow**.
 
-The workflow runs parser tests, downloads the feeds, validates the aggregate, and commits `hosts.txt` only if it passes the minimum-size safety check. If every source fails or the result is unexpectedly small, the previous list is preserved.
+The workflow runs parser tests, downloads the feeds, validates the aggregate, and commits all generated host-list parts only if the aggregate passes the minimum-size safety check. If every source fails or the result is unexpectedly small, the previous list is preserved.
 
-**Current aggregate:** `hosts.txt` has been populated with 74,512 unique domains from the ad, pop-up, referral, mobile, Smart TV, and native-device tracker feeds collected in this update. The scheduled workflow will refresh it from the 45 configured upstream sources when a run completes successfully. Check the [Actions page](https://github.com/Kesitinh13524/AdHost-TDB/actions) for update status.
+**Current aggregate:** The generated `hosts*.txt` files together form one deduplicated set. Import every part listed in the repository; the latest successful workflow reports the host count and source health. Check the [Actions page](https://github.com/Kesitinh13524/AdHost-TDB/actions) for update status.
 
 ## False positives
 

@@ -61,11 +61,11 @@
   },
   {
     "name": "BlocklistProject Ads",
-    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/master/ads.txt"
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/ads.txt"
   },
   {
     "name": "BlocklistProject Tracking",
-    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/master/tracking.txt"
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/tracking.txt"
   },
   {
     "name": "Vietnamese hostsVN",
@@ -178,5 +178,105 @@
   {
     "name": "HaGeZi referral and affiliate trackers",
     "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/blocklist-referral-native.txt"
+  },
+  {
+    "name": "BlocklistProject Abuse",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/abuse.txt"
+  },
+  {
+    "name": "BlocklistProject Adobe",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/adobe.txt"
+  },
+  {
+    "name": "BlocklistProject Basic",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/basic.txt"
+  },
+  {
+    "name": "BlocklistProject Crypto",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/crypto.txt"
+  },
+  {
+    "name": "BlocklistProject Drugs",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/drugs.txt"
+  },
+  {
+    "name": "BlocklistProject Facebook",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/facebook.txt"
+  },
+  {
+    "name": "BlocklistProject Fortnite",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/fortnite.txt"
+  },
+  {
+    "name": "BlocklistProject Fraud",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/fraud.txt"
+  },
+  {
+    "name": "BlocklistProject Gambling",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/gambling.txt"
+  },
+  {
+    "name": "BlocklistProject Malware",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/malware.txt"
+  },
+  {
+    "name": "BlocklistProject Phishing",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/phishing.txt"
+  },
+  {
+    "name": "BlocklistProject Piracy",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/piracy.txt"
+  },
+  {
+    "name": "BlocklistProject Porn",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/porn.txt"
+  },
+  {
+    "name": "BlocklistProject Ransomware",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/ransomware.txt"
+  },
+  {
+    "name": "BlocklistProject Redirect",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/redirect.txt"
+  },
+  {
+    "name": "BlocklistProject Scam",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/scam.txt"
+  },
+  {
+    "name": "BlocklistProject Smart TV",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/smart-tv.txt"
+  },
+  {
+    "name": "BlocklistProject Tiktok",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/tiktok.txt"
+  },
+  {
+    "name": "BlocklistProject Torrent",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/torrent.txt"
+  },
+  {
+    "name": "BlocklistProject Twitter",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/twitter.txt"
+  },
+  {
+    "name": "BlocklistProject Vaping",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/vaping.txt"
+  },
+  {
+    "name": "BlocklistProject Whatsapp",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/whatsapp.txt"
+  },
+  {
+    "name": "BlocklistProject Youtube",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/youtube.txt"
+  },
+  {
+    "name": "BlocklistProject Porn Alpha",
+    "url": "https://raw.githubusercontent.com/blocklistproject/Lists/main/alpha/porn-alpha.txt"
+  },
+  {
+    "name": "HaGeZi TIF threat-intelligence domains",
+    "url": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/tif-onlydomains.txt"
   }
 ]

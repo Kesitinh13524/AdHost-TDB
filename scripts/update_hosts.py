@@ -17,8 +17,9 @@ OUTPUT = ROOT / "hosts.txt"
 SOURCES_FILE = ROOT / "sources.json"
 ALLOWLIST_FILE = ROOT / "allowlist.txt"
 MIN_DOMAINS = int(os.environ.get("MIN_DOMAINS", "5000"))
-TIMEOUT_SECONDS = 35
-MAX_SOURCE_BYTES = 30 * 1024 * 1024
+TIMEOUT_SECONDS = 120
+MAX_SOURCE_BYTES = 80 * 1024 * 1024
+MAX_OUTPUT_BYTES = 90 * 1024 * 1024
 DOMAIN_RE = re.compile(
     r"^(?=.{1,253}$)(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,63}$",
     re.IGNORECASE,
@@ -93,7 +94,7 @@ def fetch(url: str) -> str:
             raise RuntimeError(f"HTTP {response.status}")
         payload = response.read(MAX_SOURCE_BYTES + 1)
     if len(payload) > MAX_SOURCE_BYTES:
-        raise RuntimeError("source exceeded 30 MiB safety limit")
+        raise RuntimeError("source exceeded 80 MiB safety limit")
     return payload.decode("utf-8", errors="replace")
 
 
@@ -107,8 +108,8 @@ def main() -> int:
         name, url = source["name"], source["url"]
         try:
             domains = parse_domains(fetch(url), allow)
-            if len(domains) < 100:
-                raise RuntimeError(f"only {len(domains)} valid domains parsed")
+            if not domains:
+                raise RuntimeError("no valid domains parsed")
             merged.update(domains)
             successes.append(f"{name}: {len(domains):,}")
             print(f"OK {name}: {len(domains):,} valid domains")
@@ -138,9 +139,44 @@ def main() -> int:
         "# Upstream false positives are possible. See README.md.",
         "",
     ]
-    content = "\n".join(header + sorted(merged)) + "\n"
-    OUTPUT.write_text(content, encoding="utf-8", newline="\n")
-    print(f"Wrote {len(merged):,} unique domains to {OUTPUT}")
+    header.append(
+        "# Large aggregates are split into sorted, non-overlapping hosts*.txt files."
+    )
+    header_text = "\n".join(header) + "\n"
+    header_size = len(header_text.encode("utf-8"))
+    output_paths: list[Path] = [OUTPUT]
+    part_number = 1
+    output_path = OUTPUT
+    stream = output_path.open("w", encoding="utf-8", newline="\n")
+    stream.write(header_text)
+    bytes_written = header_size
+
+    for domain in sorted(merged):
+        line = domain + "\n"
+        line_size = len(line.encode("ascii"))
+        if bytes_written + line_size > MAX_OUTPUT_BYTES and bytes_written > header_size:
+            stream.close()
+            part_number += 1
+            output_path = ROOT / f"hosts-part-{part_number:02d}.txt"
+            output_paths.append(output_path)
+            stream = output_path.open("w", encoding="utf-8", newline="\n")
+            stream.write(header_text)
+            bytes_written = header_size
+        stream.write(line)
+        bytes_written += line_size
+    stream.close()
+
+    active_outputs = set(output_paths)
+    for stale_path in ROOT.glob("hosts-part-*.txt"):
+        if stale_path not in active_outputs:
+            stale_path.unlink()
+
+    print(
+        f"Wrote {len(merged):,} unique domains across {len(output_paths)} "
+        "non-overlapping files."
+    )
+    for output_path in output_paths:
+        print(f"Output: {output_path.name} ({output_path.stat().st_size:,} bytes)")
     if failures:
         print("Some upstream sources failed; successful sources passed validation.", file=sys.stderr)
     return 0

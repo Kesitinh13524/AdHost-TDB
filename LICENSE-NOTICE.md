@@ -2,7 +2,8 @@
 
 AdHost-TDB aggregates third-party blocklists. Sources used by the daily `hosts.txt` generator include:
 
-- HaGeZi DNS blocklists: https://github.com/hagezi/dns-blocklists
+- BlocklistProject Lists: all 25 canonical host lists and the Porn Alpha list, https://github.com/blocklistproject/Lists
+- HaGeZi DNS blocklists, including TIF: https://github.com/hagezi/dns-blocklists
 - StevenBlack/hosts: https://github.com/StevenBlack/hosts
 - AdAway: https://adaway.org/hosts.txt
 
@@ -18,6 +19,6 @@ This file is a point-in-time hostname export from the seven filter archives supp
 - AdGuard uBlock filter 11: https://filters.adtidy.org/extension/ublock/filters/11.txt
 - AdGuard uBlock filter 2: https://filters.adtidy.org/extension/ublock/filters/2.txt
 
-The upstream lists retain their own licenses and attribution terms. HaGeZi publishes its lists under GNU GPL version 3 and requires a copy of that license to accompany redistribution; this repository includes [LICENSE-GPL-3.0.txt](LICENSE-GPL-3.0.txt). EasyList is dual licensed under GPL version 3 or later and CC BY-SA 3.0 or later. AdGuard filters are GPL-3.0-only. StevenBlack/hosts is MIT licensed. Please consult each upstream source for its current terms.
+BlocklistProject/Lists declares The Unlicense for its lists. HaGeZi publishes its lists, including TIF, under GNU GPL version 3 and requires a copy of that license to accompany redistribution; this repository includes [LICENSE-GPL-3.0.txt](LICENSE-GPL-3.0.txt). EasyList is dual licensed under GPL version 3 or later and CC BY-SA 3.0 or later. AdGuard filters are GPL-3.0-only. StevenBlack/hosts is MIT licensed. Please consult each upstream source for its current terms.
 
 This list is provided without warranty and may contain false positives.
