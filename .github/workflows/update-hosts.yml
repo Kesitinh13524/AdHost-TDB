@@ -37,7 +37,7 @@ jobs:
       - name: Publish the single large-file release asset
         env:
           GH_TOKEN: ${{ github.token }}
-          ASSET_PATH: \${{ runner.temp }}/hosts.txt
+          ASSET_PATH: ${{ runner.temp }}/hosts.txt
         run: |
           new_digest=$(sha256sum "$ASSET_PATH" | cut -d ' ' -f 1)
           current_digest=$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq '.assets[] | select(.name == "hosts.txt") | .digest // empty' 2>/dev/null || true)
