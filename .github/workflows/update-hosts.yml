@@ -30,16 +30,33 @@ jobs:
           python-version: "3.12"
       - name: Test parser
         run: python -m unittest discover -s tests -v
-      - name: Generate NextDNS-compatible domain list
+      - name: Generate single NextDNS-compatible domain list
+        env:
+          HOSTS_RELEASE_OUTPUT: ${{ runner.temp }}/hosts.txt
         run: python scripts/update_hosts.py
-      - name: Commit changed list
+      - name: Publish the single large-file release asset
+        env:
+          GH_TOKEN: \${{ github.token }}
+          ASSET_PATH: \${{ runner.temp }}/hosts.txt
         run: |
-          if [ -z "$(git status --porcelain)" ]; then
-            echo "Generated host-list files are unchanged."
+          new_digest=$(sha256sum "$ASSET_PATH" | cut -d ' ' -f 1)
+          current_digest=$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq '.assets[] | select(.name == "hosts.txt") | .digest // empty' 2>/dev/null || true)
+          current_digest="\${current_digest#sha256:}"
+          if [ "$new_digest" = "$current_digest" ]; then
+            echo "Release asset is unchanged."
             exit 0
           fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "chore: refresh NextDNS blocklist"
-          git push
+
+          tag="hosts-\${GITHUB_RUN_ID}-\${GITHUB_RUN_ATTEMPT}"
+          gh release create "$tag" "$ASSET_PATH" \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "Latest deduplicated host list" \
+            --notes "Automatically refreshed from configured host feeds. Stable URL: https://github.com/$GITHUB_REPOSITORY/releases/latest/download/hosts.txt" \
+            --target "$GITHUB_SHA" \
+            --latest
+
+          while IFS= read -r old_tag; do
+            if [ -n "$old_tag" ] && [ "$old_tag" != "$tag" ]; then
+              gh release delete "$old_tag" --cleanup-tag --yes --repo "$GITHUB_REPOSITORY"
+            fi
+          done < <(gh release list --repo "$GITHUB_REPOSITORY" --limit 100 --json tagName --jq '.[] | select(.tagName | startswith("hosts-")) | .tagName')

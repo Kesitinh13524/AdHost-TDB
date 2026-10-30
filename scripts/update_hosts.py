@@ -2,7 +2,6 @@
 """Build a bare-domain denylist suitable for NextDNS custom denylist."""
 from __future__ import annotations
 
-import datetime as dt
 import ipaddress
 import json
 import os
@@ -13,13 +12,12 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / "hosts.txt"
+OUTPUT = Path(os.environ.get("HOSTS_RELEASE_OUTPUT", str(ROOT / "hosts.txt")))
 SOURCES_FILE = ROOT / "sources.json"
 ALLOWLIST_FILE = ROOT / "allowlist.txt"
 MIN_DOMAINS = int(os.environ.get("MIN_DOMAINS", "5000"))
 TIMEOUT_SECONDS = 120
 MAX_SOURCE_BYTES = 80 * 1024 * 1024
-MAX_OUTPUT_BYTES = 90 * 1024 * 1024
 DOMAIN_RE = re.compile(
     r"^(?=.{1,253}$)(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,63}$",
     re.IGNORECASE,
@@ -129,54 +127,23 @@ def main() -> int:
         )
         return 1
 
-    today = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
     header = [
         "# AdHost-TDB — NextDNS-compatible custom denylist",
-        f"# Generated: {today} UTC",
         f"# Unique domains: {len(merged):,}",
         "# Format: one bare domain per line; no 0.0.0.0 or 127.0.0.1 prefix.",
-        "# Sources: " + "; ".join(successes),
-        "# Upstream false positives are possible. See README.md.",
+        "# Sources and attribution: see sources.json, README.md, and LICENSE-NOTICE.md.",
+        "# Upstream false positives are possible.",
         "",
     ]
-    header.append(
-        "# Large aggregates are split into sorted, non-overlapping hosts*.txt files."
-    )
-    header_text = "\n".join(header) + "\n"
-    header_size = len(header_text.encode("utf-8"))
-    output_paths: list[Path] = [OUTPUT]
-    part_number = 1
-    output_path = OUTPUT
-    stream = output_path.open("w", encoding="utf-8", newline="\n")
-    stream.write(header_text)
-    bytes_written = header_size
-
-    for domain in sorted(merged):
-        line = domain + "\n"
-        line_size = len(line.encode("ascii"))
-        if bytes_written + line_size > MAX_OUTPUT_BYTES and bytes_written > header_size:
-            stream.close()
-            part_number += 1
-            output_path = ROOT / f"hosts-part-{part_number:02d}.txt"
-            output_paths.append(output_path)
-            stream = output_path.open("w", encoding="utf-8", newline="\n")
-            stream.write(header_text)
-            bytes_written = header_size
-        stream.write(line)
-        bytes_written += line_size
-    stream.close()
-
-    active_outputs = set(output_paths)
-    for stale_path in ROOT.glob("hosts-part-*.txt"):
-        if stale_path not in active_outputs:
-            stale_path.unlink()
-
+    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    with OUTPUT.open("w", encoding="utf-8", newline="\n") as output:
+        output.write("\n".join(header) + "\n")
+        for domain in sorted(merged):
+            output.write(domain + "\n")
     print(
-        f"Wrote {len(merged):,} unique domains across {len(output_paths)} "
-        "non-overlapping files."
+        f"Wrote {len(merged):,} unique domains to {OUTPUT} "
+        f"({OUTPUT.stat().st_size:,} bytes)"
     )
-    for output_path in output_paths:
-        print(f"Output: {output_path.name} ({output_path.stat().st_size:,} bytes)")
     if failures:
         print("Some upstream sources failed; successful sources passed validation.", file=sys.stderr)
     return 0

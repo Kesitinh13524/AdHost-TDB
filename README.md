@@ -1,10 +1,10 @@
 # AdHost-TDB
 
-One logical, deduplicated domain denylist for **Adblocker app** and compatible DNS blockers. When needed, GitHub stores it as several smaller, non-overlapping files.
+One logical, deduplicated domain denylist for **Adblocker app** and compatible DNS blockers. The complete plain-text list is delivered as a single large-file release asset.
 
 ## Output format
 
-`hosts.txt` is the first shard of a **plain domain list**: one lowercase domain per line, with no IP address prefix. The generator converts standard hosts-file lines, plain domain feeds, and simple Adblock domain rules; validates hostnames; removes duplicates; and applies `allowlist.txt`. If the combined output grows beyond the safe GitHub file size, it creates `hosts-part-02.txt` and later parts. Import every generated shard; no hostname is repeated between files.
+`hosts.txt` is one plain domain list: one lowercase domain per line, with no IP address prefix. The generator normalizes supported feeds, validates hostnames, removes duplicates, and applies `allowlist.txt`. Because the list is larger than GitHub's per-file repository limit, it is published as a single GitHub Release asset instead of being committed into the source tree.
 
 Example:
 
@@ -14,9 +14,8 @@ doubleclick.net
 tracker.example.net
 ```
 
-Raw URLs (import both; the shards contain no duplicate domains):
-- [hosts.txt](https://raw.githubusercontent.com/Kesitinh13524/AdHost-TDB/main/hosts.txt)
-- [hosts-part-02.txt](https://raw.githubusercontent.com/Kesitinh13524/AdHost-TDB/main/hosts-part-02.txt)
+Single download URL:
+https://github.com/Kesitinh13524/AdHost-TDB/releases/latest/download/hosts.txt
 
 ## Aggregated sources
 
@@ -60,9 +59,9 @@ These lists overlap by design; the generator stores each valid domain only once 
 ## weekly updates
 
 
-The workflow runs parser tests, downloads the feeds, validates the aggregate, and commits all generated host-list parts only if the aggregate passes the minimum-size safety check. If every source fails or the result is unexpectedly small, the previous list is preserved.
+The workflow runs parser tests, downloads the feeds, validates the aggregate, and publishes one `hosts.txt` release asset when its contents change. The repository stays small, and the download URL remains stable. If every source fails or the result is unexpectedly small, the previous list is preserved.
 
-**Current aggregate:** The generated `hosts*.txt` files together form one deduplicated set. Import every part listed in the repository; the latest successful workflow reports the host count and source health. Check the [Actions page](https://github.com/Kesitinh13524/AdHost-TDB/actions) for update status.
+**Current aggregate:** One plain-text file is available at the [latest release download URL](https://github.com/Kesitinh13524/AdHost-TDB/releases/latest/download/hosts.txt). The workflow updates that asset when the deduplicated host data changes. See the [Actions page](https://github.com/Kesitinh13524/AdHost-TDB/actions) for update status.
 
 ## False positives
 
