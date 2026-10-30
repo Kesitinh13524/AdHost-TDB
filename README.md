@@ -19,7 +19,7 @@ https://github.com/Kesitinh13524/AdHost-TDB/releases/latest/download/hosts.txt
 
 ## Aggregated sources
 
-The daily generator merges these 70 upstream feeds where available:
+The daily generator merges these 72 upstream feeds where available:
 
 - HaGeZi Pop-Up Ads domains
 - 1Hosts Xtra
@@ -39,6 +39,7 @@ The daily generator merges these 70 upstream feeds where available:
 - BlocklistProject Lists: all 25 published host lists (Abuse, Adobe, Ads, Basic, Crypto, Drugs, Facebook, Fortnite, Fraud, Gambling, Malware, Phishing, Piracy, Porn, Ransomware, Redirect, Scam, Smart TV, TikTok, Torrent, Tracking, Twitter, Vaping, WhatsApp, and YouTube), plus Porn Alpha
 - Vietnamese hostsVN and its ad-server feed
 - AdGuard Mobile Ads and Mobile Spyware hosts
+- AdGuard Android filter 15 optimized
 - PolishFilters KADhosts
 - FadeMind Spam and anti-popads
 - Yoyo ad servers
@@ -47,6 +48,7 @@ The daily generator merges these 70 upstream feeds where available:
 - NextDNS native tracking domains (Xiaomi, Apple, Alexa)
 - DandelionSprout Anti-Malware hosts
 - Firebog Easylist and AdGuardDNS hosts
+- EasyList Anti-Adblock Filter List
 - FadeMind Additional Risks
 - Android app ads hosts
 - DataMaster Android AdBlock hosts
@@ -54,7 +56,7 @@ The daily generator merges these 70 upstream feeds where available:
 - HaGeZi referral and affiliate trackers
 - HaGeZi TIF threat-intelligence domains
 
-These lists overlap by design; the generator stores each valid domain only once across all output parts. Sources may change, become unavailable, or contain false positives. Some upstream lists include malware, phishing, telemetry, and tracking domains. The complete BlocklistProject set also includes social-media and content categories such as adult content, drugs, gambling, and piracy, so importing every part may block those services as well.
+These lists overlap by design; the generator stores each valid domain once in the single output. Sources may change, become unavailable, or contain false positives. Some upstream lists include malware, phishing, telemetry, and tracking domains. The complete BlocklistProject set also includes social-media and content categories such as adult content, drugs, gambling, and piracy, so the combined list may block those services as well.
 
 ## weekly updates
 

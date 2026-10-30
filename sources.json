@@ -278,5 +278,13 @@
   {
     "name": "HaGeZi TIF threat-intelligence domains",
     "url": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/tif-onlydomains.txt"
+  },
+  {
+    "name": "AdGuard Android filter 15 optimized",
+    "url": "https://filters.adtidy.org/android/filters/15_optimized.txt"
+  },
+  {
+    "name": "EasyList Anti-Adblock Filter List",
+    "url": "https://easylist-downloads.adblockplus.org/antiadblockfilters.txt"
   }
 ]
